@@ -51,4 +51,4 @@ jobs:
           commit_message: "Update data.json"
           commit_author: "GitHub Actions <actions@github.com>"
 #           branch: main
-          file_pattern: .json
+          file_pattern: "*.json"
