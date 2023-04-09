@@ -1,0 +1,26 @@
+name: Get JSON
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+
+jobs:
+  get-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get JSON
+        run: |
+          curl -s "https://123milhas.com/api/v3/top-ofertas-com-ap/continent/europa?between-end=15&between-start=1&duration=1&origin=recife&page=1" > data.json
+        shell: bash
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update data.json"
+          commit_author: "GitHub Actions <actions@github.com>"
+          branch: main
+          file_pattern: data.json
