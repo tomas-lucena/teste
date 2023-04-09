@@ -25,5 +25,5 @@ jobs:
         with:
           commit_message: "Update data.json"
           commit_author: "GitHub Actions <actions@github.com>"
-          branch: main
+#           branch: main
           file_pattern: data.json
