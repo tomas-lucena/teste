@@ -22,7 +22,7 @@ jobs:
       
       - name: EDIT JSON
         run: |
-         jq ".topOffers[] | {
+          jq ".topOffers[] | {
                     outbound_airline_name,
                     inbound_airline_name,
                     departure_time,
@@ -41,13 +41,12 @@ jobs:
                     destination_name,
                     airport_destination_name,
                     airport_origin_name,
-                    url_search}" data.json | jq -n [inputs] >> data.json
-                     
+                    url_search}" data.json | jq -n [inputs] >> data.json       
         shell: bash
      
-     - name: SAVE CSV
+      - name: SAVE CSV
         run: |
-           cat data.json | jq -r '.[] | join(",")' >  $(date +"%Y_%m_%d_%I_%M_%p").csv
+          cat data.json | jq -r '.[] | join(",")' >  $(date +"%Y_%m_%d_%I_%M_%p").csv
         shell: bash
         
       - name: Commit and push changes
