@@ -46,7 +46,7 @@ jobs:
      
       - name: SAVE CSV
         run: |
-          cat data.json | jq -r '.[] | join(",")' >  $(date +"%Y_%m_%d_%I_%M_%p").csv
+          cat data.json | jq -r '.[] | join(";")' >  $(date +"%Y_%m_%d_%I_%M_%p").csv
         shell: bash
         
       - name: Commit and push changes
