@@ -41,14 +41,18 @@ jobs:
                     destination_name,
                     airport_destination_name,
                     airport_origin_name,
-                    url_search}" data.json | jq -n [inputs] >  $(date +"%Y_%m_%d_%I_%M_%p").json
+                    url_search}" data.json | jq -n [inputs] >> data.json
+                     
         shell: bash
-
-
+     
+     - name: SAVE CSV
+        run: |
+           cat data.json | jq -r '.[] | join(",")' >  $(date +"%Y_%m_%d_%I_%M_%p").csv
+        shell: bash
+        
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "Update data.json"
           commit_author: "GitHub Actions <actions@github.com>"
-#           branch: main
-          file_pattern: "*.json"
+          file_pattern: "*.csv"
