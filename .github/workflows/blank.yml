@@ -41,7 +41,7 @@ jobs:
                     destination_name,
                     airport_destination_name,
                     airport_origin_name,
-                    url_search}" data.json >  $(date +"%Y_%m_%d_%I_%M_%p").json
+                    url_search}" data.json | jq -n [inputs] >  $(date +"%Y_%m_%d_%I_%M_%p").json
         shell: bash
 
 
