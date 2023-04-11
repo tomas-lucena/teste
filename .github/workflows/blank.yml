@@ -46,7 +46,7 @@ jobs:
      
       - name: SAVE CSV
         run: |
-          cat data.json | jq -r '.[] | join(";")' >  $(date +"%Y_%m_%d_%I_%M_%p").csv
+          cat data.json | jq -r '.[] | join(";")' >  dados/$(date +"%Y_%m_%d_%I_%M_%p").csv
         shell: bash
         
       - name: Commit and push changes
@@ -54,4 +54,4 @@ jobs:
         with:
           commit_message: "Update data.json"
           commit_author: "GitHub Actions <actions@github.com>"
-          file_pattern: "*.csv"
+          file_pattern: "dados/*.csv"
